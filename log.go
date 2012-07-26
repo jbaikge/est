@@ -181,8 +181,8 @@ func (t sortedTasks) Less(i, j int) bool {
 }
 func (t sortedTasks) Swap(i, j int) { t[i], t[j] = t[j], t[i] }
 
-var defaultLogTemplate = `{{.}}
-{{range .Annotations}}{{$.Name | printf "% -20s"}}{{.}}
+var defaultLogTemplate = "\033[1m{{.Name | printf \"% -30s\"}}{{.Actual}} / {{.Estimate}} ({{.Ratio | printf \"%0.2f\"}})\033[0m" + `
+{{range .Annotations}}{{$.Name | printf "% -30s"}}{{.}}
 {{end}}`
 
 var cmdTemplate = `est new {{.Name}}
